@@ -23,6 +23,7 @@ namespace Slub\SlubDigitalcollections\ViewHelpers;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -68,7 +69,7 @@ class PageInfoViewHelper extends AbstractViewHelper
         if (0 === $uid) {
             $pageUid = $GLOBALS['TSFE']->id;
         }
-        $pageRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Frontend\Page\PageRepository::class);
+        $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
         $page = $pageRepository->getPage($pageUid);
 
         $output = $page[$field];

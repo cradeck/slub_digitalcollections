@@ -7,20 +7,11 @@ $EM_CONF[$_EXTKEY] = array(
 	'author' => 'Alexander Bigga',
 	'author_email' => 'typo3@slub-dresden.de',
 	'author_company' => 'SLUB Dresden',
-	'shy' => '',
-	'priority' => '',
-	'module' => '',
 	'state' => 'stable',
-	'internal' => '',
-	'uploadfolder' => '0',
-	'createDirs' => '',
-	'modify_tables' => '',
-	'clearCacheOnLoad' => 0,
-	'lockType' => '',
 	'version' => '3.0.1',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '9.5.31-10.4.99',
+			'typo3' => '11.5.0-11.5.99',
 		),
 	),
 );

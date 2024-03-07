@@ -23,6 +23,8 @@ namespace Slub\SlubDigitalcollections\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 use Kitodo\Dlf\Common\Document;
@@ -31,7 +33,7 @@ use Kitodo\Dlf\Domain\Repository\StructureRepository;
 use Kitodo\Dlf\Domain\Repository\CollectionRepository;
 use Kitodo\Dlf\Domain\Repository\MetadataRepository;
 
-class SingleCollectionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class SingleCollectionController extends ActionController
 {
     /**
      * DocumentRepository
@@ -122,7 +124,7 @@ class SingleCollectionController extends \TYPO3\CMS\Extbase\Mvc\Controller\Actio
      *
      * @return void
      */
-    public function showAction()
+    public function showAction(): ResponseInterface
     {
         // if search was triggered, get search parameters from POST variables
         $searchParams = $this->getParametersSafely('searchParameter');
@@ -156,6 +158,7 @@ class SingleCollectionController extends \TYPO3\CMS\Extbase\Mvc\Controller\Actio
         $this->view->assign('widgetPage', $widgetPage);
         $this->view->assign('lastSearch', $searchParams);
         $this->view->assign('rawResults', $solrSearch->getSolrResults());
+        return $this->htmlResponse();
 
     }
 

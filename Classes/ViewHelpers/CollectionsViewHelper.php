@@ -22,6 +22,7 @@ namespace Slub\SlubDigitalcollections\ViewHelpers;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -59,7 +60,7 @@ class CollectionsViewHelper extends AbstractViewHelper
         $kitodoId = $arguments['kitodoId'];
         $solrHost = rtrim($arguments['solrHost'], "/");
         $solrTimeout = $arguments['solrTimeout'];
-        if (\TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($kitodoId)) {
+        if (MathUtility::canBeInterpretedAsInteger($kitodoId)) {
             // calculate cache identifier
             $cacheIdentifier = $kitodoId;
             $cache = GeneralUtility::makeInstance(CacheManager::class)->getCache('slub_digitalcollections_matomo_collections');
